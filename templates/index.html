@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Price Predictor</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f5f5f5;
+    }
+    .container {
+      max-width: 600px;
+      margin-top: 50px;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>🚗 Welcome to Car Price Predictor</h2>
+    <p class="text-center">This app predicts the price of a car you want to sell. Try filling the details below:</p>
+    <form method="POST">
+      <div class="mb-3">
+        <label for="company" class="form-label">Select the Company:</label>
+        <select class="form-select" name="company" id="company" required>
+          <option selected disabled>Select Company</option>
+          <option value="Hyundai">Hyundai</option>
+          <option value="Mahindra">Mahindra</option>
+          <option value="Ford">Ford</option>
+          <option value="Maruti">Maruti</option>
+          <option value="Skoda">Skoda</option>
+          <option value="Audi">Audi</option>
+          <option value="Toyota">Toyota</option>
+          <option value="Renault">Renault</option>
+          <option value="Honda">Honda</option>
+          <option value="Datsun">Datsun</option>
+          <option value="Mitsubishi">Mitsubishi</option>
+          <option value="Tata">Tata</option>
+          <option value="Volkswagen">Volkswagen</option>
+          <option value="Chevrolet">Chevrolet</option>
+          <option value="Mini">Mini</option>
+          <option value="BMW">BMW</option>
+          <option value="Nissan">Nissan</option>
+          <option value="Hindustan">Hindustan</option>
+          <option value="Fiat">Fiat</option>
+          <option value="Force">Force</option>
+          <option value="Mercedes">Mercedes</option>
+          <option value="Land">Land</option>
+          <option value="Jaguar">Jaguar</option>
+          <option value="Jeep">Jeep</option>
+          <option value="Volvo">Volvo</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="model" class="form-label">Car Model Name:</label>
+        <input type="text" class="form-control" name="model" id="model" placeholder="Enter Full Car Model" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="year" class="form-label">Select Year of Purchase:</label>
+        <select class="form-select" name="year" id="year" required>
+          <option selected disabled>Select Year</option>
+          <script>
+            const years = [2007, 2006, 2014, 2012, 2013, 2016, 2015, 2010, 2017, 2008, 2018,
+                           2011, 2019, 2009, 2005, 2000, 2003, 2004, 1995, 2002, 2001];
+            years.sort((a, b) => b - a).forEach(year => {
+              document.write(`<option value="${year}">${year}</option>`);
+            });
+          </script>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="fuel" class="form-label">Select the Fuel Type:</label>
+        <select class="form-select" name="fuel" id="fuel" required>
+          <option selected disabled>Select Fuel Type</option>
+          <option value="Petrol">Petrol</option>
+          <option value="Diesel">Diesel</option>
+          <option value="LPG">LPG</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="kms" class="form-label">Kilometers Driven:</label>
+        <input type="number" class="form-control" name="kms" id="kms" placeholder="e.g. 45000" required>
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100">Predict Price</button>
+    </form>
+
+    {% if prediction_text %}
+      <div class="alert alert-success text-center mt-4">
+        {{ prediction_text }}
+      </div>
+    {% endif %}
+  </div>
+</body>
+</html>
